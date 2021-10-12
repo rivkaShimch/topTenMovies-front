@@ -4,23 +4,21 @@ import keys from '../../config/key';
 
 export const addMovie = ({ dispatch, getState }) => next => action => {
     if (action.type === 'ADD_MOVIE_TO_SERVER') {
-        dispatch(actions.setNewMovie(action.payload))
-debugger
-        // let urlData = `${keys.API_URL}$/movie/addMovie`
-        // $.ajax({
-        //     url: urlData,
-        //     method: 'POST',
-        //     contentType: "application/json; charset=utf-8",
-        //     data: JSON.stringify(action.payload),
-        //     success: function (data) {
+        let urlData = `${keys.API_URL}/movie/addMovie`
+        $.ajax({
+            url: urlData,
+            method: 'POST',
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(action.payload),
+            success: function (data) {
                
-        //         dispatch(actions.setNewMovie(data.movie))
-        //     },
-        //     error: function (err) {
-        //         console.log(err)
+                dispatch(actions.setNewMovie(data.movie))
+            },
+            error: function (err) {
+                console.log(err)
                 
-        //     }
-        // });
+            }
+        });
     }
     return next(action);
 }
@@ -29,14 +27,15 @@ debugger
 export const getMovieByCategory = ({ dispatch, getState }) => next => action => {
     if (action.type === 'GET_MOVIES_BY_CATEGORY_SERVER') {
         debugger
-        let urlData = `${keys.API_URL}$/movie/getMoviesByCategory`
+        let category= {category: action.payload}
+        let urlData = `${keys.API_URL}/movie/getMoviesByCategory`
         $.ajax({
             url: urlData,
             method: 'POST',
             contentType: "application/json; charset=utf-8",
-            data: JSON.stringify(action.payload),
+            data: JSON.stringify(category),
             success: function (data) {
-               
+               console.log(data);
                 dispatch(actions.setMovies(data.movies))
             },
             error: function (err) {
