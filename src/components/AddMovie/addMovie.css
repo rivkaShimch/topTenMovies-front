@@ -12,7 +12,6 @@
     display: flex;
     flex-direction: column;
     display: table 
-
 }
 .paddingDiv{
     padding: 5px;
@@ -20,4 +19,11 @@
 .formGroup{
     display: flex;
     flex-direction: row;
+}
+.submitButton{
+    display: flex;
+}
+.paddingLeft{
+    background-color: white;
+    padding-left: 5px !important;
 }

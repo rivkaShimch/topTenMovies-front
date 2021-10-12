@@ -1,18 +1,16 @@
 import React, { useState } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux';
 import {actions} from '../../redux/actions/action'
+import './movieDetails.css'
 
 function MovieDetails(props) {
-const backToList=()=>{
-  props.setRouterFlag(props.routerOptions.topTenMovies);
-  props.setCurrentMovie('')
-}
-       return (<>
-         <h4>{props.currentMovie.name}</h4>
-         <h4>Rate {props.currentMovie.rate}</h4>
-         <h4>Category {props.currentMovie.category}</h4>
-         <div onClick={()=>{backToList()}}>Back to movies list</div>
-        </>)
+
+       return (<div className="detailsDiv">
+           <div className="paddingDiv"></div>
+         <h4 >{props.movie.name}</h4>
+         <h4 >Rate {props.movie.rate}</h4>
+         <h4>Category {props.movie.category}</h4>
+        </div>)
 
 }
 

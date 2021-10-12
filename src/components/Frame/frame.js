@@ -6,34 +6,38 @@ import Movie from '../Movie/movie'
 import './frame.css'
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Button from 'react-bootstrap/Button';
-import Dropdown from 'react-bootstrap/Dropdown';
+import Form from 'react-bootstrap/Form';
 import AddMovie from '../AddMovie/addMovie'
 import ResizePanel from "react-resize-panel"
 
 
 function Frame(props) {
 
+    const changCategory=(category)=>{
+        props.setSelectedCategory(category)
+        props.getMoviesByCategoryServer(category)
+    }
        return (<>
   <h1 className="title">Top Ten Movies</h1>
   {
-     
+     props.routerOptions.addMovie===props.routerFlag?
+
+        <AddMovie/>:
       props.routerOptions.singleMovie===props.routerFlag?
       <MovieDetails/>:
       <>
   <div className="otherOption">
-    <div className="col-1"></div>
-    <DropdownButton className="col-2" id="dropdown-basic-button" title="filter by category">
-        <Dropdown.Item >Action</Dropdown.Item>
-        <Dropdown.Item >Drama</Dropdown.Item>
-        <Dropdown.Item >Comedy</Dropdown.Item>
-        <Dropdown.Item >Tension</Dropdown.Item>
-        <Dropdown.Item >Science Fiction</Dropdown.Item>
-    </DropdownButton>
-    <div className="col-2"></div>
+    <Form.Select className="selectCategory" value={props.selectedCategory} onChange={(e)=>{changCategory(e.target.value)}} >
+                        <option value="">Filter By Category</option>
+                        <option value="Action">Action</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Tension">Tension</option>
+                        <option value="Science Fiction">Science Fiction</option>
+                    </Form.Select> 
     <Button className="addMovieButton col-2" variant="primary" onClick={()=>{props.setRouterFlag(props.routerOptions.addMovie)}}>Add new movie</Button>
-    <div className="col-2"></div>
   </div>
- 
+ <div className="paddingFrame"></div>
   <div className="mainDiv">
       
     <div className="fullList">
@@ -46,9 +50,6 @@ function Frame(props) {
           <Movie movie={movie}/>)}
     </div>
     </div>
-    {props.routerOptions.addMovie===props.routerFlag?
-
-     <AddMovie/>:<></>}
     </div>
     </>
   }
@@ -62,12 +63,14 @@ export default connect(
             topTenMovies: state.topTenMovies,
             currentMovie: state.currentMovie,
             routerFlag: state.routerFlag,
-            routerOptions: state.routerOptions
+            routerOptions: state.routerOptions,
+            selectedCategory: state.selectedCategory
         }
     },
 
     (dispatch) => ({
         setRouterFlag: (val) => { dispatch(actions.setRouterFlag(val)) },
-
+        setSelectedCategory: (val) => { dispatch(actions.setSelectedCategory(val)) },
+        getMoviesByCategoryFromServer: (val) => { dispatch(actions.getMoviesByCategoryFromServer(val)) },
     })
 )(Frame)
