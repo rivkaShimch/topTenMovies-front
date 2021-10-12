@@ -1,0 +1,23 @@
+.formAddMovie{
+    display: flex;
+    justify-content: center;
+    width: 5rem;
+    padding-bottom: 5px;
+}
+.formLabel{
+    display: flex;
+    text-align: start;
+}
+.rateCheck{
+    display: flex;
+    flex-direction: column;
+    display: table 
+
+}
+.paddingDiv{
+    padding: 5px;
+}
+.formGroup{
+    display: flex;
+    flex-direction: row;
+}

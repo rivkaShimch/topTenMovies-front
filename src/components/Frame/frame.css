@@ -1,0 +1,27 @@
+.moviesList{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 5px;
+}
+.otherOption{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.mainDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.fullList{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.title{
+text-align: center;
+}
