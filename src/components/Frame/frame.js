@@ -71,6 +71,6 @@ export default connect(
     (dispatch) => ({
         setRouterFlag: (val) => { dispatch(actions.setRouterFlag(val)) },
         setSelectedCategory: (val) => { dispatch(actions.setSelectedCategory(val)) },
-        getMoviesByCategoryFromServer: (val) => { dispatch(actions.getMoviesByCategoryFromServer(val)) },
+        getMoviesByCategoryServer: (val) => { dispatch(actions.getMoviesByCategoryServer(val)) },
     })
 )(Frame)

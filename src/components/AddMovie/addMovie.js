@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-
+import Container from 'react-bootstrap/Container'
 function AddMovie(props) {
 const [name, setName]= useState('')
 const [image, setImage]= useState('')
@@ -24,31 +24,30 @@ const onsubmitForm= ()=>{
 }
 
 return (<div>
+    <Container fluid="md" >
         <Form className="formAddMovie" >
-            <div className="paddingDiv" style={{ padding: "5px" }}></div>
+            <div className="paddingDiv" style={{ padding: "15px" }}></div>
             <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
-                <Col sm="1"></Col>
                 <Form.Label column sm="2">
                     Name
                  </Form.Label>
-                <Col sm="3">
+                <Col sm="2">
                     <Form.Control value={name} onChange={(e)=>{setName(e.target.value)}} type="text" placeholder="Enter Movie Name" />
                 </Col>
-                <Col sm="7"></Col>
+                <Col sm="8"></Col>
             </Form.Group>
           
             <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
-            <Col sm="1"></Col>
                 <Form.Label column sm="2">
                     Movie's cover image
     </Form.Label>
                 <Col sm="3">
                     <Form.Control type="file" onChange={(e)=>{setImage(e.target.files[0])}} placeholder="Choose image" />
                 </Col>
-                <Col sm="7"></Col>
+
+                <Col sm="8"></Col>
             </Form.Group>
             <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
-            <Col sm="1"></Col>
                 <Form.Label column sm="2">
                     Choose movie's category
     </Form.Label>
@@ -61,11 +60,10 @@ return (<div>
                         <option value="Tension">Tension</option>
                         <option value="Science Fiction">Science Fiction</option>
                     </Form.Select>    </Col>
-                    <Col sm="7"></Col>
+                    <Col sm="8"></Col>
 
             </Form.Group>
             <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
-            <Col sm="1"></Col>
 
                 <Form.Label column sm="2">
                     Choose movie's rate
@@ -79,7 +77,7 @@ return (<div>
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </Form.Select>    </Col>
-                    <Col sm="7"></Col>
+                    <Col sm="8"></Col>
 
             </Form.Group>
             <div className="paddingDiv" style={{ padding: "5px" }}></div>
@@ -91,6 +89,8 @@ return (<div>
               
             </div>
         </Form>
+        </Container>
+
     </div>)
 
 }
