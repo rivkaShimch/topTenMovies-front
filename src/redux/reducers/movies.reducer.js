@@ -1,14 +1,9 @@
 import produce from 'immer'
 import createReducer from "./reducerUtils";
-import movieImage from '../../components/assets/m1.jpeg'
 
 const initialState = {
-    topTenMovies: [{name:'1', category:'action', rate: '5', image:movieImage},{name:'2', category:'drama', rate: '4'},
-    {name:'3', category:'comedy', rate: '3'},{name:'4', category:'comedy', rate: '3'},{name:'5', category:'comedy', rate: '3'},
-    {name:'6', category:'comedy', rate: '3'},{name:'7', category:'comedy', rate: '3'},{name:'8', category:'comedy', rate: '3'},
-    {name:'9', category:'comedy', rate: '3'},{name:'10', category:'comedy', rate: '3'}],
+    topTenMovies: [],
     selectedCategory:'',
-    currentMovie:'',
     routerFlag: 'topTenMovies',
     routerOptions:{singleMovie:'singleMovie', addMovie: 'addMovie', topTenMovies:'topTenMovies'}
 }
@@ -17,9 +12,6 @@ const moviesReducer = {
     setMovies(state, action) {
         state.topTenMovies = action.payload;
     },  
-    setCurrentMovie(state, action){
-        state.currentMovie= action.payload
-    },
     setRouterFlag(state, action){
         state.routerFlag= action.payload
     },
@@ -27,17 +19,11 @@ const moviesReducer = {
         state.selectedCategory= action.payload
     },
     setNewMovie(state, action){
-        if(state.selectedCategory === action.payload.category)
+        if(state.selectedCategory===''||state.selectedCategory === action.payload.category)
             {
-                // if(state.topTenMovies<10)
-                //     state.topTenMovies= state.topTenMovies.concat(action.payload)
-                // else{
-                    state.topTenMovies= checkMovieRate(action.payload, state.topTenMovies)
-                // }
+                state.topTenMovies= checkMovieRate(action.payload, state.topTenMovies)
             }
-        else{
-            state.topTenMovies= checkMovieRate(action.payload, state.topTenMovies)
-        }
+       
     },
 
 }

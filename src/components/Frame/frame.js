@@ -4,11 +4,10 @@ import {actions} from '../../redux/actions/action'
 import MovieDetails from '../MovieDetails/movieDetails';
 import Movie from '../Movie/movie'
 import './frame.css'
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import AddMovie from '../AddMovie/addMovie'
-import ResizePanel from "react-resize-panel"
 
 
 function Frame(props) {
@@ -27,8 +26,6 @@ function Frame(props) {
      props.routerOptions.addMovie===props.routerFlag?
 
         <AddMovie/>:
-      props.routerOptions.singleMovie===props.routerFlag?
-      <MovieDetails/>:
       <>
   <div className="otherOption">
     <Form.Select className="selectCategory" value={props.selectedCategory} onChange={(e)=>{changCategory(e.target.value)}} >
@@ -36,14 +33,15 @@ function Frame(props) {
                         <option value="Action">Action</option>
                         <option value="Drama">Drama</option>
                         <option value="Comedy">Comedy</option>
-                        <option value="Tension">Tension</option>
+                        <option value="Thriller">Thriller</option>
                         <option value="Science Fiction">Science Fiction</option>
                     </Form.Select> 
     <Button className="addMovieButton col-2" variant="primary" onClick={()=>{props.setRouterFlag(props.routerOptions.addMovie)}}>Add new movie</Button>
   </div>
  <div className="paddingFrame"></div>
   <div className="mainDiv">
-      
+      {props.loading===true?
+      <Spinner animation="grow" />:<span/>}
     <div className="fullList">
       <div className="moviesList">{
       props.topTenMovies.slice(0, 5).map(movie=>
@@ -65,10 +63,10 @@ export default connect(
     (state) => {
         return {
             topTenMovies: state.topTenMovies,
-            currentMovie: state.currentMovie,
             routerFlag: state.routerFlag,
             routerOptions: state.routerOptions,
-            selectedCategory: state.selectedCategory
+            selectedCategory: state.selectedCategory,
+            loading: state.loading
         }
     },
 

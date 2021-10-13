@@ -12,7 +12,12 @@ const [image, setImage]= useState('')
 const [category, setCategory]=useState('')
 const [rate, setRate]=useState('')
 
+const checkedValidation=()=>{
+    
+}
 const onsubmitForm= ()=>{
+    let checked= checkedValidation()
+    if(checked){
     props.setRouterFlag(props.routerOptions.topTenMovies)
     const newMovie={
         name: name,
@@ -22,6 +27,15 @@ const onsubmitForm= ()=>{
     }
     props.addMovieToServer(newMovie)
 }
+}
+
+  const encodeImageFileAsURL= (file)=> {
+    let reader = new FileReader();
+    reader.onloadend = function() {
+      setImage(reader.result)
+    }
+    reader.readAsDataURL(file);
+  }
 
 return (<div>
     <Container fluid="md" >
@@ -42,7 +56,7 @@ return (<div>
                     Movie's cover image
     </Form.Label>
                 <Col sm="3">
-                    <Form.Control type="file" onChange={(e)=>{setImage(e.target.files[0])}} placeholder="Choose image" />
+                    <Form.Control type="file" onChange={(e)=>{encodeImageFileAsURL(e.target.files[0])}} placeholder="Choose image" />
                 </Col>
 
                 <Col sm="8"></Col>
@@ -57,7 +71,7 @@ return (<div>
                         <option value="Action">Action</option>
                         <option value="Drama">Drama</option>
                         <option value="Comedy">Comedy</option>
-                        <option value="Tension">Tension</option>
+                        <option value="Thriller">Thriller</option>
                         <option value="Science Fiction">Science Fiction</option>
                     </Form.Select>    </Col>
                     <Col sm="8"></Col>
@@ -99,14 +113,12 @@ export default connect(
     (state) => {
         return {
             topTenMovies: state.topTenMovies,
-            currentMovie: state.currentMovie,
             routerFlag: state.routerFlag,
             routerOptions: state.routerOptions
         }
     },
 
     (dispatch) => ({
-        setCurrentMovie: (val) => { dispatch(actions.setCurrentMovie(val)) },
         setRouterFlag: (val) => { dispatch(actions.setRouterFlag(val)) },
         addMovieToServer: (val) => { dispatch(actions.addMovieToServer(val)) },
     })

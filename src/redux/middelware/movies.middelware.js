@@ -5,6 +5,7 @@ import keys from '../../config/key';
 export const addMovie = ({ dispatch, getState }) => next => action => {
     if (action.type === 'ADD_MOVIE_TO_SERVER') {
         let movie= {movie: action.payload}
+        debugger
         let urlData = `${keys.API_URL}/movie/addMovie`
         $.ajax({
             url: urlData,
@@ -12,7 +13,7 @@ export const addMovie = ({ dispatch, getState }) => next => action => {
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(movie),
             success: function (data) {
-               
+               debugger
                 dispatch(actions.setNewMovie(data.movie))
             },
             error: function (err) {

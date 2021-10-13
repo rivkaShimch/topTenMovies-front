@@ -18,13 +18,11 @@ export default connect(
     (state) => {
         return {
             topTenMovies: state.topTenMovies,
-            currentMovie: state.currentMovie,
             routerOptions: state.routerOptions
         }
     },
 
     (dispatch) => ({
-        setCurrentMovie: (val) => { dispatch(actions.setCurrentMovie(val)) },
         setRouterFlag: (val) => { dispatch(actions.setRouterFlag(val)) },
     })
 )(MovieDetails)
