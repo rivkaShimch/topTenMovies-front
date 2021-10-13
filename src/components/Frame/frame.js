@@ -15,7 +15,11 @@ function Frame(props) {
 
     const changCategory=(category)=>{
         props.setSelectedCategory(category)
-        props.getMoviesByCategoryServer(category)
+        if(category!=='')
+            props.getMoviesByCategoryServer(category)
+        else{
+            props.getMoviesServer()
+        }
     }
        return (<>
   <h1 className="title">Top Ten Movies</h1>
@@ -72,5 +76,7 @@ export default connect(
         setRouterFlag: (val) => { dispatch(actions.setRouterFlag(val)) },
         setSelectedCategory: (val) => { dispatch(actions.setSelectedCategory(val)) },
         getMoviesByCategoryServer: (val) => { dispatch(actions.getMoviesByCategoryServer(val)) },
+        getMoviesServer: (val) => { dispatch(actions.getMoviesServer(val)) },
+        
     })
 )(Frame)
