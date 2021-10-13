@@ -5,7 +5,8 @@ const initialState = {
     topTenMovies: [],
     selectedCategory:'',
     routerFlag: 'topTenMovies',
-    routerOptions:{singleMovie:'singleMovie', addMovie: 'addMovie', topTenMovies:'topTenMovies'}
+    routerOptions:{ addMovie: 'addMovie', topTenMovies:'topTenMovies'},
+    movieAdded:false
 }
 const moviesReducer = {
 
@@ -23,8 +24,12 @@ const moviesReducer = {
             {
                 state.topTenMovies= checkMovieRate(action.payload, state.topTenMovies)
             }
-       
+       state.routerFlag= state.routerOptions.topTenMovies
     },
+    setMovieAdded(state, action){
+        state.movieAdded= action.payload
+    },
+    
 
 }
 const checkMovieRate= (newMovie, topTenMovies)=>{

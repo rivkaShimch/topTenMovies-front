@@ -4,7 +4,7 @@ import keys from '../../config/key';
 
 export const addMovie = ({ dispatch, getState }) => next => action => {
     if (action.type === 'ADD_MOVIE_TO_SERVER') {
-        let movie= {movie: action.payload}
+        let movie = { movie: action.payload }
         debugger
         let urlData = `${keys.API_URL}/movie/addMovie`
         $.ajax({
@@ -13,15 +13,15 @@ export const addMovie = ({ dispatch, getState }) => next => action => {
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(movie),
             success: function (data) {
-                if(data.movie)
+                if (data.movie)
                     dispatch(actions.setNewMovie(data.movie))
-                else{
+                else {
                     alert('This Movie is alredy in the system, please choose another.')
                 }
             },
             error: function (err) {
                 console.log(err)
-                
+
             }
         });
     }
@@ -39,12 +39,12 @@ export const getMovies = ({ dispatch, getState }) => next => action => {
             method: 'POST',
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-               console.log(data);
+                console.log(data);
                 dispatch(actions.setMovies(data.movies))
             },
             error: function (err) {
                 console.log(err)
-                
+
             }
         });
     }
@@ -54,7 +54,7 @@ export const getMovies = ({ dispatch, getState }) => next => action => {
 export const getMoviesByCategory = ({ dispatch, getState }) => next => action => {
     if (action.type === 'GET_MOVIES_BY_CATEGORY_SERVER') {
         debugger
-        let category= {category: action.payload}
+        let category = { category: action.payload }
         let urlData = `${keys.API_URL}/movie/getMoviesByCategory`
         $.ajax({
             url: urlData,
@@ -62,12 +62,12 @@ export const getMoviesByCategory = ({ dispatch, getState }) => next => action =>
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(category),
             success: function (data) {
-               console.log(data);
+                console.log(data);
                 dispatch(actions.setMovies(data.movies))
             },
             error: function (err) {
                 console.log(err)
-                
+
             }
         });
     }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { actions } from '../../redux/actions/action'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -40,7 +40,9 @@ function AddMovie(props) {
                 category: category,
                 rate: rate
             }
-            props.addMovieToServer(newMovie)
+            let movie = props.addMovieToServer(newMovie)
+            if (movie)
+                props.setRouterFlag(props.routerOptions.topTenMovies)
         }
     }
 

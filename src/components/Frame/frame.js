@@ -39,8 +39,6 @@ function Frame(props) {
   </div>
  <div className="paddingFrame"></div>
   <div className="mainDiv">
-      {props.loading===true?
-      <Spinner animation="grow" />:<span/>}
     <div className="fullList">
       <div className="moviesList">{
       props.topTenMovies.slice(0, 5).map(movie=>
@@ -65,7 +63,6 @@ export default connect(
             routerFlag: state.routerFlag,
             routerOptions: state.routerOptions,
             selectedCategory: state.selectedCategory,
-            loading: state.loading
         }
     },
 
