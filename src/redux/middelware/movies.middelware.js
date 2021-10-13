@@ -13,8 +13,11 @@ export const addMovie = ({ dispatch, getState }) => next => action => {
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(movie),
             success: function (data) {
-               debugger
-                dispatch(actions.setNewMovie(data.movie))
+                if(data.movie)
+                    dispatch(actions.setNewMovie(data.movie))
+                else{
+                    alert('This Movie is alredy in the system, please choose another.')
+                }
             },
             error: function (err) {
                 console.log(err)
