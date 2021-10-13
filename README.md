@@ -13,5 +13,9 @@ This project run on port 3000 by default.
 
 Run this commands on the project terminal to run the project-
 
-npm i
-npm start
+- npm i
+- npm start
+
+Then you can open your browser on "http://localhost:3000/". 
+
+Run the topTenMovies-backend project to get data.
