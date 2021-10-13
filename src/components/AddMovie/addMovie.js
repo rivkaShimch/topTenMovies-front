@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { connect} from 'react-redux';
 import { actions } from '../../redux/actions/action'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -79,7 +79,7 @@ function AddMovie(props) {
                 </Form.Group>
                 <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                     <Form.Label column sm="2">
-                        Choose movie's category
+                        Movie's category
     </Form.Label>
                     <Col sm="3">
                         <Form.Select value={category} onChange={(e) => { setCategory(e.target.value) }}>
@@ -96,7 +96,7 @@ function AddMovie(props) {
                 <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
 
                     <Form.Label column sm="2">
-                        Choose movie's rate
+                        Movie's rate
     </Form.Label>
                     <Col sm="3">
                         <Form.Select value={rate} onChange={(e) => { setRate(e.target.value) }}>

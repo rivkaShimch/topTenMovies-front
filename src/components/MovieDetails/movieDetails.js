@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
-import { connect, useDispatch, useSelector } from 'react-redux';
-import {actions} from '../../redux/actions/action'
+import React from 'react'
+import { connect } from 'react-redux';
 import './movieDetails.css'
 
 function MovieDetails(props) {
@@ -8,7 +7,7 @@ function MovieDetails(props) {
        return (<div className="detailsDiv">
            <div className="paddingDiv"></div>
          <h4 >{props.movie.name}</h4>
-         <h4 >Rate {props.movie.rate}</h4>
+         <h4 >Movie's Rate {props.movie.rate}</h4>
          <h4>Category {props.movie.category}</h4>
         </div>)
 
@@ -23,6 +22,5 @@ export default connect(
     },
 
     (dispatch) => ({
-        setRouterFlag: (val) => { dispatch(actions.setRouterFlag(val)) },
     })
 )(MovieDetails)

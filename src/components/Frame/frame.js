@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { connect, useDispatch, useSelector } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux';
 import {actions} from '../../redux/actions/action'
-import MovieDetails from '../MovieDetails/movieDetails';
 import Movie from '../Movie/movie'
 import './frame.css'
 import Spinner from 'react-bootstrap/Spinner';
